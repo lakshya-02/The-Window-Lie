@@ -1,0 +1,62 @@
+# Game Intro Setup Guide
+
+## Scripts Created:
+1. **GameSceneManager.cs** - Master controller for game flow
+2. **CameraIntro.cs** - Camera cutscene controller
+3. **DialogueUI.cs** - Dialogue text display (updated)
+
+## Setup Instructions:
+
+### 1. Scene Setup
+- Create a scene called "MainScene" (or name it in GameSceneManager)
+- This is where the cutscene and dialogue will play
+
+### 2. GameSceneManager Setup
+- Create an empty GameObject in your scene
+- Name it "GameSceneManager"
+- Add the `GameSceneManager` script to it
+- Configure settings:
+  - Main Scene Name: Enter your main scene name
+  - Load Scene On Start: Check if you want auto-start
+  - Scene Load Delay: 0.5s (default)
+  - Dialogue Start Delay: 1s (default)
+
+### 3. Camera Setup
+- Select your Main Camera
+- Add the `CameraIntro` script to it
+- Settings:
+  - First Rotation Duration: 2s (X-axis: 90° to 0°)
+  - Second Rotation Duration: 2s (Y-axis: 0° to 90°)
+  - Start Delay: 0.5s
+  - Play On Start: UNCHECK (GameSceneManager will control it)
+
+### 4. DialogueUI Setup
+- Create a Canvas (if not exists)
+- Create a TextMeshPro object for dialogue
+- Add/configure your DialogueUI component
+- Initially, the dialogue object can be active or inactive (GameSceneManager will handle it)
+
+### 5. Link References in GameSceneManager
+- Drag the CameraIntro component to the "Camera Intro" field
+- Drag the DialogueUI component to the "Dialogue UI" field
+
+### 6. Build Settings
+- Add your MainScene to Build Settings (File > Build Settings)
+
+## Game Flow:
+1. Game starts
+2. Scene loads (if needed)
+3. Camera cutscene plays (rotation animations)
+4. Short delay
+5. Dialogue UI appears and text starts typing
+
+## Testing:
+- Press Play in Unity
+- The sequence should run automatically
+- Camera rotates, then dialogue appears
+
+## Troubleshooting:
+- Check Console for debug messages
+- Make sure all references are assigned in Inspector
+- Ensure scene name matches exactly
+- Verify CameraIntro "Play On Start" is UNCHECKED
